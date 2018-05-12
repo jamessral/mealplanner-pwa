@@ -1,0 +1,12 @@
+// 1. Import the initial variables
+@import 'bulma/sass/utilities/initial-variables.sass';
+
+@import './styles/variables.scss';
+
+@import 'bulma/bulma.sass';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
