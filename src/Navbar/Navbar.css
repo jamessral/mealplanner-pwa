@@ -1,4 +1,7 @@
-a.button.is-text {
+.main-nav a.button.is-text {
   height: 100%;
   text-decoration: none;
   width: 100%; }
+
+.main-nav a.navbar-burger span {
+  display: hidden; }

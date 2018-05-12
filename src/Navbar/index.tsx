@@ -1,41 +1,61 @@
+import * as cx from 'classnames';
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Navbar.css';
 
-class Navbar extends React.Component {
+interface IState {
+  hamburgerOpen: boolean;
+}
+
+class Navbar extends React.Component<any, IState> {
+  public state: IState = {
+    hamburgerOpen: false,
+  };
+
+  public handleHamburgerClick = (e: any) => {
+    e.preventDefault();
+    this.setState({hamburgerOpen: !this.state.hamburgerOpen});
+  };
+
   public render() {
+    const {hamburgerOpen} = this.state;
+    const hambugerClass = cx('navbar-burger', {'is-active': hamburgerOpen});
+
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar main-nav" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <Link className="navbar-item" to="/">
             MealPlanner
           </Link>
+          <a
+            role="button"
+            className={hambugerClass}
+            aria-label="menu"
+            aria-expanded="false"
+            onClick={this.handleHamburgerClick}>
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </a>
         </div>
-        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true">Ingredients</span>
-          <span aria-hidden="true">Recipes</span>
-          <span aria-hidden="true">About</span>
-        </a>
         <div className="navbar-menu">
           <div className="navbar-start">
             <Link
               className="button is-text navbar-item"
               role="button"
-              to="/ingredients"
-            >
+              to="/ingredients">
               Ingredients
             </Link>
             <Link
               className="button is-text navbar-item"
               role="button"
-              to="/recipes"
-            >
+              to="/recipes">
               Recipes
             </Link>
           </div>
         </div>
       </nav>
-    )
+    );
   }
 }
 
