@@ -1,8 +1,7 @@
 // 1. Import the initial variables
 @import 'bulma/sass/utilities/initial-variables.sass';
-
+@import "bulma/sass/utilities/functions";
 @import './styles/variables.scss';
-
 @import 'bulma/bulma.sass';
 
 body {
